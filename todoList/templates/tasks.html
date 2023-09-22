@@ -1,0 +1,36 @@
+{% extends "partials/base.html" %}
+
+{% block content %}
+  
+<div class="container my-3 ">
+  <h2 class="text-center py-3">Here is All Tasks </h2>
+  <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Task Title</th>
+          <th scope="col">Task Descripation</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% comment  %}Run a for here and iterate all the tasks{% endcomment %}
+        {% for task in tasks %}
+        <tr>
+          <th scope="row">{{forloop.counter}}</th>
+          <td>{{task.taskTitle}}</td>
+          <td>{{task.taskDesc}}</td>
+          <td><a href="{% url 'delete' task.id %}" class="btn btn-danger">Delete</a></td>
+          <td><a href="{% url 'update' task.id %}" class="btn btn-info">Edit</a></td>
+        </tr>
+        {% endfor %}
+        
+      </tbody>
+    </table>
+
+</div>
+{% endblock %}
+
+
+{% include 'partials/footer.html'%}
+  </body>
+</html>
